@@ -11,6 +11,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # NEW STEP: Authenticate with GHCR to pull the base image
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Existing Docker Hub login
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
