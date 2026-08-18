@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # High-performance in-memory cache for state persistence
+  redis:
+    image: redis:7-alpine
+    container_name: monad_redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+  # Main Monad HFT Node container
+  hft-node:
+    build: .
+    container_name: monad_hft_engine
+    depends_on:
+      - redis
+    environment:
+      - MONAD_RPC_URL=https://testnet-rpc.monad.xyz
+      - MONAD_WS_URL=wss://testnet-rpc.monad.xyz/ws
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
