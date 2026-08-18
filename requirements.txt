@@ -1,0 +1,20 @@
+# ==========================================
+# Monad HFT Node Dependencies
+# ==========================================
+
+# Core EVM & Blockchain Interaction
+web3>=6.0.0
+eth-account>=0.8.0
+
+# Asynchronous Networking (Critical for HFT WebSockets)
+websockets>=11.0.3
+aiohttp>=3.8.4
+
+# High-Performance Data Processing
+orjson>=3.9.0
+numpy>=1.24.0
+pandas>=2.0.0
+
+# General Utilities & External Notifications
+requests>=2.31.0
+python-dotenv>=1.0.0
