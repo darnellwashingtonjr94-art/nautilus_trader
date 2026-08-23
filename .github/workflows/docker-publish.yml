@@ -31,4 +31,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/monad-hft-node:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nautilus_trader:latest
